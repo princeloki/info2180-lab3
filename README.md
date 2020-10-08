@@ -1,2 +1,2 @@
 # info2180-lab3
-Web dev lab 3
+This is Lab 3 for Teriq Strachan
