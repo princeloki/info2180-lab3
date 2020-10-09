@@ -17,5 +17,22 @@ window.onload = function(){
         item.style.color = "coral";
       }
     })
+
+    item.addEventListener("mouseover", event=>{
+      item.style.cursor = "pointer";
+      item.classList.add("hover");
+      // if(item.innerHTML == "" || item.innerHTML=="X"){
+      //   item.classList.remove("hover.O");
+      //   item.classList.add("hover");
+      // } else if(item.innerHTML == "O"){
+      //   item.classList.remove("hover");
+      //   item.classList.add("hover.O");
+      // }
+    })
+
+    item.addEventListener("mouseout", event=>{
+      // item.classList.remove("hover.O");
+      item.classList.remove("hover");
+    })
   })
 };
