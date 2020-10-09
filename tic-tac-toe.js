@@ -1,7 +1,13 @@
 window.onload = function(){
+
+  /* Variable Declaration */
+
   var board = document.getElementById("board");
   var squares = Array.from((board.getElementsByTagName("div")));
   var status = document.getElementById("status");
+  var button = document.getElementsByClassName("btn")[0];
+
+  /* Sets up the squares and add's events per click or hover */
 
   squares.forEach(item =>{
     item.className = "square";
@@ -30,6 +36,17 @@ window.onload = function(){
     })
   })
 
+  /* Reset Game ----- New Game*/
+
+  button.addEventListener("click", event=>{
+    status.classList.remove("you-won");
+    status.innerHTML = "Move your mouse over a square and click to play an X or an O."
+    squares.forEach(item =>{
+      item.innerHTML = "";
+    })
+  })
+
+  /* Continues to call the parameter(function) for 1000s*/
 
   setInterval(function(){
     if(squares[2].innerHTML == "X" && squares[4].innerHTML ==
