@@ -9,10 +9,12 @@ window.onload = function(){
         item.innerHTML = "X";
         item.classList.remove("square.O");
         item.classList.add("square.X");
+        item.style.color = "lightBlue";
       } else if(item.innerHTML == "X"){
         item.innerHTML = "O";
         item.classList.remove("square.X");
         item.classList.add("square.O");
+        item.style.color = "coral";
       }
     })
   })
