@@ -6,23 +6,29 @@ window.onload = function(){
   var squares = Array.from((board.getElementsByTagName("div")));
   var status = document.getElementById("status");
   var button = document.getElementsByClassName("btn")[0];
-
   /* Sets up the squares and add's events per click or hover */
 
   squares.forEach(item =>{
     item.className = "square";
+
     item.addEventListener("click", event=>{
-      if(item.innerHTML =="" || item.innerHTML=="O"){
-        item.innerHTML = "X";
-        item.classList.remove("square.O");
-        item.classList.add("square.X");
-        item.style.color = "lightBlue";
-      } else if(item.innerHTML == "X"){
-        item.innerHTML = "O";
-        item.classList.remove("square.X");
-        item.classList.add("square.O");
-        item.style.color = "coral";
-      }
+        if(item.classList.contains("selected")){
+          return;
+        } else{
+            if(item.innerHTML =="" || item.innerHTML=="O"){
+            item.innerHTML = "X";
+            item.classList.remove("square.O");
+            item.classList.add("square.X");
+            item.style.color = "lightBlue";
+          } else if(item.innerHTML == "X"){
+            item.innerHTML = "O";
+            item.classList.remove("square.X");
+            item.classList.add("square.O");
+            item.style.color = "coral";
+            item.classList.add("selected");
+          }
+        }
+
     })
 
     item.addEventListener("mouseover", event=>{
@@ -31,9 +37,9 @@ window.onload = function(){
     })
 
     item.addEventListener("mouseout", event=>{
-      // item.classList.remove("hover.O");
       item.classList.remove("hover");
     })
+
   })
 
   /* Reset Game ----- New Game*/
@@ -42,6 +48,7 @@ window.onload = function(){
     status.classList.remove("you-won");
     status.innerHTML = "Move your mouse over a square and click to play an X or an O."
     squares.forEach(item =>{
+      item.classList.remove("selected");
       item.innerHTML = "";
     })
   })
@@ -70,13 +77,13 @@ window.onload = function(){
 
     for(var i=0;i<squares.length;i++){
       try{
-        if(squares[i].innerHTML == "X" && squares[i+1].innerHTML ==
-        "X" && squares[i+2].innerHTML == "X"){
+        if((squares[i].innerHTML == "X" && squares[i+1].innerHTML ==
+        "X" && squares[i+2].innerHTML == "X")&&(i==0 || i==3 || i==6)){
           status.innerHTML = "Congratulations!XistheWinner!";
           status.classList.add("you-won");
           break;
-        } else if(squares[i].innerHTML == "O" && squares[i+1].innerHTML ==
-        "O" && squares[i+2].innerHTML == "O"){
+        } else if((squares[i].innerHTML == "O" && squares[i+1].innerHTML ==
+        "O" && squares[i+2].innerHTML == "O") && (i==0 || i==3 || i==6)){
           status.innerHTML = "Congratulations!OistheWinner!";
           status.classList.add("you-won");
           break;
@@ -98,5 +105,18 @@ window.onload = function(){
     }
   }, 1000);
 
+    /**/
+
+    // setInterval(function(){
+    //     for(var i=0;i<squares.length;i++){
+    //       if(sqaures[i].innerHTML == ""){
+    //
+    //       } else if(squares[i].innerHTML=="X"){
+    //
+    //       } else if(squares[i].innerHTML=="O"){
+    //
+    //       }
+    //     }
+    // }, 1000);
 
 };
